@@ -49,5 +49,6 @@ print(arr1)
 left, right = np.split(arr1, [2], axis=1)  # axis 1 : 열 (가로로 쪼갠다는 뜻)
 print(left.shape)
 print(right.shape)
+
 print(left)
 print(right)
