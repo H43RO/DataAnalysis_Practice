@@ -50,8 +50,10 @@ print()
 array1 = np.arange(16).reshape(2,8)
 print(array1)
 print()
+
 left, right = np.split(array1, [3], axis=1)
 print(left)
 print()
+
 print(right)
 print()
