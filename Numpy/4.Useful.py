@@ -57,7 +57,7 @@ array2[0] = 0
 print(array1)  # copy()를 사용했기 때문에 값에 영향이 없음
 print()
 
-# 중복된 원소 제거
+# 중복된 원소 제거 (Set 자료형으로 변환할 필요 없음)
 array = np.array([1, 1, 2, 2, 2, 3, 3, 4])
 print(np.unique(array))
 print()
