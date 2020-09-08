@@ -73,3 +73,72 @@ print()
 print(df.groupby(['Type']).aggregate([min, max, np.average]))
 print()
 
+
+# Frequency 의 평균이 5 이상인지 여부 판단
+def my_filter(data):
+    return data['Frequency'].mean() >= 5
+
+
+print(df)
+print()
+# Frequency 의 평균이 5 이상인 그룹을 출력
+df = df.groupby('Type').filter(my_filter)
+print(df)
+print()
+
+# 특정 그룹을 출력
+df = pd.DataFrame([
+    ['Apple', 7, 5, 'Fruit'],
+    ['Banana', 3, 6, 'Fruit'],
+    ['Beef', 5, 2, 'Meal'],
+    ['Kimchi', 4, 8, 'Meal']],
+    index=["A", "B", "C", "D"],
+    columns=["Name", "Frequency", "Importance", "Type"])
+print(df)
+print()
+df = df.groupby('Type').get_group('Fruit')
+print(df)
+print()
+
+# 특정 그룹의 특정 컬럼에 대하여 평균값과 얼마나 차이나는지 출력
+df = pd.DataFrame([
+    ['Apple', 7, 5, 'Fruit'],
+    ['Banana', 3, 6, 'Fruit'],
+    ['Beef', 5, 2, 'Meal'],
+    ['Kimchi', 4, 8, 'Meal']],
+    columns=["Name", "Frequency", "Importance", "Type"])
+
+df["Gap"] = df.groupby('Type')["Frequency"].apply(lambda x: x - x.mean())
+print(df)
+print()
+
+# Data Frame 다중화
+df = pd.DataFrame(
+    np.random.randint(1, 10, (4, 4)),
+    index=[['1차', '1차', '2차', '2차'], ['공격', '수비', '공격', '수비']],
+    columns=['1회', '2회', '3회', '4회']
+)
+print(df)
+print()
+# 1회 그리고 2회의 2차 값만 가져옴
+print(df[["1회", "2회"]].loc["2차"])
+print()
+
+# 피벗 테이블
+df = pd.DataFrame([
+    ['Apple', 7, 5, 'Fruit'],
+    ['Banana', 3, 6, 'Fruit'],
+    ['Coconut', 2, 6, 'Fruit'],
+    ['Rice', 8, 2, 'Meal'],
+    ['Beef', 5, 2, 'Meal'],
+    ['Kimchi', 4, 8, 'Meal']],
+    columns=["Name", "Frequency", "Importance", "Type"])
+print(df)
+print()
+
+# 같은 Importance 를 갖고 있으면 Frequency 를 기준으로 한다
+df = df.pivot_table(
+    index="Importance", columns="Type", values="Frequency",
+    aggfunc=np.max
+)
+print(df)
