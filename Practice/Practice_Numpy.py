@@ -55,3 +55,50 @@ boolean_idx = [False, True, False, True, False]
 print(vector[boolean_idx])
 int_idx = [1, 3]
 print(vector[int_idx])
+print()
+
+# 5 * 6 행렬 만든 후 조건에 맞는 코드 작성
+matrix = np.arange(1, 31).reshape(5, 6)
+print(matrix)
+# 데이터 최대값 구하기
+print(np.max(matrix))
+# 각 행의 합계 구하기
+print(np.sum(matrix, axis=1))
+# 각 열의 합계 구하기
+print(np.sum(matrix, axis=0))
+# 각 열의 평균 구하기
+print(np.mean(matrix, axis=0))
+print()
+
+# 각 행에 새로운 데이터 삽입하기
+matrix = np.arange(1, 7).reshape(2, 3)
+new = np.array([[10, 20]])
+print(matrix)
+print()
+
+# transpose() 메소드 또는 T 속성을 이용하여 전치행렬 출력 가능
+# 다만 transpose() 는 T 속성과 다르게 축을 바꾸고 싶은 위치 등을 지정할 수 있음
+result = np.concatenate((matrix, new.transpose()), axis=1)
+result = np.concatenate((matrix, new.T), axis=1)
+print(result)
+print()
+
+# 연습문제 자료출처 : https://leechamin.tistory.com/30
+
+z = np.zeros(10)
+print(z)
+
+z = np.zeros((10, 10))
+print("%d bytes" % (z.size * z.itemsize))
+
+z = [1, 2, 0, 0, 4, 0]
+print(np.nonzero(z))
+
+z = np.eye(10, 10)
+print(z)
+
+z = np.random.random((3,3,3))
+print(z)
+
+z = np.random.randint(0, 10, (3, 3))
+print(z)
