@@ -97,8 +97,50 @@ print(np.nonzero(z))
 z = np.eye(10, 10)
 print(z)
 
-z = np.random.random((3,3,3))
+z = np.random.random((3, 3, 3))
 print(z)
 
 z = np.random.randint(0, 10, (3, 3))
 print(z)
+
+z = np.ones((10, 10))
+z[1:-1, 1:-1] = 0
+print(z)
+print()
+
+z = np.ones((5, 5))
+z = np.pad(z, pad_width=1, mode='constant', constant_values=0)
+print(z)
+print()
+
+# 대각 행렬 diag() 를 구현할 때, k 특성은 시작점을 바꿔줄 수 있다. (k=-1 등)
+z = np.diag(np.arange(1, 5), k=0)
+print(z)
+print()
+
+# 체크보드 패턴
+'''
+z[A::B] 는 A 인덱스로부터 B만큼 건너뛰면서 Slicing 한다.
+따라서 [1::2, ::2]는 0행을 건너뛰고 1행부터 step size 2만큼 Slicing 한다.
+그리고 동시에 0열부터 step size 2만큼을 갖고 Slicing 한다.
+'''
+z = np.zeros((8, 8))
+z[1::2, ::2] = 1
+print(z)
+print()
+z[::2, 1::2] = 1
+print(z)
+print()
+
+# (6, 7, 8) 모양의 Tensor 에서, 100번째 요소의 값은?
+'''
+np.unravel_index(indices, dims, order='C')
+-> "플랫 인덱스 또는 플랫 인덱스 배열을 좌표 배열의 튜플로 변환한다."
+-> C = 행 주요 / F = 열 주요
+'''
+z = np.unravel_index(100, (6, 7, 8))
+print(z)
+
+
+
+
