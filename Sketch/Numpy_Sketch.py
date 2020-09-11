@@ -17,5 +17,12 @@ arr1 = np.arange(4).reshape(1, 4)
 arr2 = np.arange(4, 8).reshape(1, 4)
 result = np.concatenate([arr1, arr2], axis=0)
 print(result)
+print()
 
+arr = np.random.randint(0, 10, (3, 3))
+print(arr)
+print()
+
+arr = np.random.normal(0, 1, (3, 3))
+print(arr)
 
