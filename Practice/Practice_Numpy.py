@@ -165,4 +165,16 @@ print()
 
 z = np.dot(np.ones((5, 3)), np.ones((3, 2)))
 print(z)
+print()
 
+# 배열의 특정 범위 내 요소에 마스킹 작업 하기
+z = np.arange(11)
+z[(3 < z) & (z < 8)] *= -1
+print(z)
+print()
+
+# 두 배열 간 공통 요소 출력하기
+A = np.random.randint(0, 10, 10)
+B = np.random.randint(0, 10, 10)
+print(A, B)
+print(np.intersect1d(A, B))
