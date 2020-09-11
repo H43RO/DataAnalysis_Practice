@@ -126,9 +126,12 @@ z[A::B] 는 A 인덱스로부터 B만큼 건너뛰면서 Slicing 한다.
 '''
 z = np.zeros((8, 8))
 z[1::2, ::2] = 1
+z[::2, 1::2] = 1
 print(z)
 print()
-z[::2, 1::2] = 1
+
+# tile() 을 활용한 체크보드 패턴
+z = np.tile(np.array([[0, 1], [1, 0]]), (4, 4))
 print(z)
 print()
 
@@ -140,7 +143,26 @@ np.unravel_index(indices, dims, order='C')
 '''
 z = np.unravel_index(100, (6, 7, 8))
 print(z)
+print()
 
+# 표준 정규 분포
+z = np.random.normal(0, 1, (5, 5))
+print(z)
+print()
 
+# 표준 정규 분포를 나타내는 다른 방법
+# (5, 5) 랜덤 행렬을 만들고 Normalize 공식을 이용
+x = np.random.random((5, 5))
+normalize = (x - np.mean(x)) / np.std(x)
+print(normalize)
+print()
 
+# 5 * 3 행렬과 3 * 2 행렬 곱하기
+A = np.random.randint(1, 20, (5, 3))
+B = np.random.randint(1, 20, (3, 2))
+print(A @ B)
+print()
+
+z = np.dot(np.ones((5, 3)), np.ones((3, 2)))
+print(z)
 
